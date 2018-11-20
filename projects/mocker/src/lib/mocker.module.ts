@@ -3,10 +3,9 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http'
 import { MockInterceptor, MockRouter } from './mocker.service'
 
 
-@NgModule({
-})
+@NgModule()
 export class MockerModule {
-  static forRoot(VirtualRouter: { new (): void }): ModuleWithProviders {
+  static forRoot(VirtualRouter: { new(): void }): ModuleWithProviders {
     return {
       ngModule: MockerModule,
       providers: [

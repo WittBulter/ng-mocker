@@ -1,27 +1,45 @@
-# NgMocker
+## ng-mocker
+10 seconds to build virtual interfaces in angular.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.5.
 
-## Development server
+### Enjoy
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+My sister was still in primary school, but it took her only 1 minutes to learn how to use it. It's too simple.
 
-## Code scaffolding
+1. import:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+  install: `npm i --save ng-mocker`
+  ```ts
+  // in app.module.ts
+  import { MockerModule } from 'ng-mocker'
 
-## Build
+  // ...
+  imports: [
+    HttpClientModule,
+    MockerModule.forRoot(Mocks),
+  ],
+  ```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+2. create your api:
 
-## Running unit tests
+```ts
+export class Mocks {
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+  host: string = 'http://github.com'
 
-## Running end-to-end tests
+  '/users/options'(req): any {
+    return { message: 'ok!' }
+  }
+}
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+```
 
-## Further help
+> when you request `/users/options` with angular, `{ message: 'ok!' }` will be returned.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+### LICENSE
+
+[**MIT**](LICENSE)
+
+
+
