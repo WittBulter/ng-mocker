@@ -1,10 +1,25 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core'
+import { AppService } from './app.service'
+import { tap } from 'rxjs/operators'
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  providers: [AppService],
 })
-export class AppComponent {
-  title = 'ng-mocker';
+export class AppComponent implements OnInit {
+  
+  constructor(
+    private appService: AppService,
+  ) {
+  }
+  
+  ngOnInit(): void {
+    this.appService.findComments()
+      .pipe(tap(res => {
+        console.log('response', res)
+      }))
+      .subscribe()
+  }
+
 }

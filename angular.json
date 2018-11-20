@@ -133,6 +133,41 @@
           }
         }
       }
+    },
+    "mocker": {
+      "root": "projects/mocker",
+      "sourceRoot": "projects/mocker/src",
+      "projectType": "library",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/mocker/tsconfig.lib.json",
+            "project": "projects/mocker/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/mocker/src/test.ts",
+            "tsConfig": "projects/mocker/tsconfig.spec.json",
+            "karmaConfig": "projects/mocker/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/mocker/tsconfig.lib.json",
+              "projects/mocker/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "ng-mocker"

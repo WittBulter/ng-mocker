@@ -16,6 +16,14 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "mocker": [
+        "dist/mocker"
+      ],
+      "mocker/*": [
+        "dist/mocker/*"
+      ]
+    }
   }
 }
