@@ -1,6 +1,6 @@
 {
-  "name": "mocker",
-  "version": "0.0.1",
+  "name": "ng-mocker",
+  "version": "0.2.0",
   "peerDependencies": {
     "@angular/common": "^7.0.0",
     "@angular/core": "^7.0.0"
