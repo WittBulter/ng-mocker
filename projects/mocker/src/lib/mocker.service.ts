@@ -2,6 +2,7 @@ import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse } fr
 import { Observable, of } from 'rxjs'
 import { Injectable } from '@angular/core'
 
+
 export type RouterMethods = {
   host?: string,
   path?: string,
@@ -36,11 +37,25 @@ export class MockInterceptor implements HttpInterceptor {
   }
   
   constructor(
-    router: MockRouter,
+     router: MockRouter,
   ) {
-    this.router = new (<any>router)()
+    this.check(router)
+    
     this.roads = MockInterceptor.compare(this.router)
     this.base = (this.router.host || '') + (this.router.path || '')
+  }
+  
+  check(router: MockRouter): void {
+    if (typeof router === 'function') {
+      this.router = new (<any>router)()
+    } else if (typeof router === 'object') {
+      this.router = <any>router
+    } else {
+      console.warn('Mock list must be a function or object.')
+    }
+    if (!this.router.host) {
+      console.warn('you need set host url in mock list.')
+    }
   }
   
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {

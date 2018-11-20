@@ -5,7 +5,7 @@ import { MockInterceptor, MockRouter } from './mocker.service'
 
 @NgModule()
 export class MockerModule {
-  static forRoot(VirtualRouter: { new(): void }): ModuleWithProviders {
+  static forRoot(VirtualRouter: { new(): void } | object): ModuleWithProviders {
     return {
       ngModule: MockerModule,
       providers: [

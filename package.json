@@ -2,6 +2,7 @@
   "name": "ng-mocker",
   "version": "0.2.0",
   "scripts": {
+    "start": "ng serve",
     "build": "ng build mocker",
     "commit": "node_modules/commitizen/bin/commitizen init cz-conventional-changelog --save --save-exact",
     "commitmsg": "commitlint -e $GIT_PARAMS"
